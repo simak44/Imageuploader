@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body{
+            background-color: cornflowerblue;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Uploader</title>
+</head>
+<body>
+    <h1>Image Uploader</h1>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Upload">
+    </form>
+    {% if messages %}
+    {% for message in messages %}
+     {{message}}
+    {% endfor %}
+    {% endif %}
+    {% for im in img %}
+     <img src="{{im.photo.url}}" alt="" height="200px">
+    {% endfor %}
+</body>
+</html>
